@@ -4,10 +4,10 @@
 //definir carrito
 //definir AddCart
 //mostrar carrito
-//sumar artículos al carrito
-//sacar artículos del carrito
 //ordenar por nombre
 //ordenar por precio
+//sumar artículos al carrito
+//sacar artículos del carrito
 
 /// Clases //////////////////////////////////////////////////////////////////////////////////////////////
 class Producto {
@@ -15,8 +15,9 @@ class Producto {
     this.id = id;
     this.nombre = nombre;
     this.precio = precio;
-    this.color = "#CCC";
+    this.color = "#FFF";
     this.familia = "";
+    this.imagen = 'img/producto_' + id;
     console.log(". se creo una instancia de Producto");
   }
 
@@ -26,6 +27,7 @@ class Producto {
     productoDiv.className = "product";
     productoDiv.setAttribute("ref", this.id);
     productoDiv.style.backgroundColor = this.color;
+    productoDiv.style.backgroundImage = 'url("' + this.imagen + '.jpg")';
 
     const tituloDiv = document.createElement("div");
     tituloDiv.className = "titulo";
@@ -135,11 +137,22 @@ class Cart {
   addToCart(articulo) {
     this.producto = articulo;
     console.log("-------------------");
-    console.log("agregaste " + articulo.nombre + " al carrito");
-    console.log("  -> ", articulo);
 
-    //array-push////////
-    this.productos.push(articulo);
+    //1. determinar si articulo esta en la lista
+    const art = this.productos.find((x) => x.producto.id == articulo.id);
+
+    if (art == undefined) {
+      console.log("agregaste " + articulo.nombre + " al carrito");
+      console.log("  -> ", articulo);
+      //1.a (no lo tengo en la lista) -> creo y agrego nuevo CartItem
+      const nuevoProducto = new CartItem(articulo);
+      this.productos.push(nuevoProducto);
+    } else {
+      //1.b (lo tengo en la lista) -> sumo 1 a la prop cantidad
+      art.cantidad++;
+      console.log("sumo 1 a " + articulo.nombre + " en el carrito");
+      console.log("  -> ", articulo);
+    }
 
     this.calcularCosto();
 
@@ -153,18 +166,22 @@ class Cart {
     //calculo
     let subtot = 0;
     let impuesto = 0;
+    let cantItems = 0;
 
     //for-of/////////////
     for (const prod of this.productos) {
-      subtot += prod.precio;
-      impuesto += prod.precio * this.impuestos;
+      cantItems += prod.cantidad;
+      subtot += prod.producto.precio * prod.cantidad;
+      impuesto += prod.producto.precio * prod.cantidad * this.impuestos;
     }
     const total = subtot + impuesto;
 
     //muestro
-    //array-length////////
-    this.cantProd_elem.innerHTML = this.productos.length;
 
+    //array-length////////
+    //this.cantProd_elem.innerHTML = this.productos.length;
+    
+    this.cantProd_elem.innerHTML = cantItems
     this.subtotal_elem.innerText = subtot;
     this.impuestos_elem.innerText = impuesto;
     this.totalAPagar_elem.innerText = total;
@@ -172,14 +189,22 @@ class Cart {
 
   removeFromCart(articulo) {
     console.log("-------------------");
-    console.log("eliminaste " + articulo.nombre + " del carrito");
 
     //busco el indice del prod //-- Array.findIndex
-    const index = this.productos.findIndex((x) => x.id == articulo.id);
+    const index = this.productos.findIndex((x) => x.producto.id == articulo.id);
+    const prod = this.productos[index];
 
-    const nuevoArray = this.productos.splice(index, 1);
-    console.log("    eliminaste el ítem " + (index + 1) + " del carrito");
-    console.log("    producto eliminado: " + nuevoArray[0].id);
+    if (prod.cantidad > 1) {
+      //
+      prod.cantidad--;
+      console.log(
+        "restaste una unidad de " + prod.producto.nombre + " del carrito"
+      );
+    } else {
+      const nuevoArray = this.productos.splice(index, 1);
+      console.log("eliminaste el ítem " + (index + 1) + " del carrito");
+      console.log("    producto eliminado: " + nuevoArray[0].id);
+    }
 
     this.calcularCosto();
 
@@ -194,7 +219,8 @@ class Cart {
       "tenés 1x " + this.producto.nombre + ": $" + this.producto.precio
     );
     console.log("       impuestos $" + this.producto.precio * this.impuestos);
-    console.log("       subtotal  $" + this.producto.precio * (1 + this.impuestos)
+    console.log(
+      "       subtotal  $" + this.producto.precio * (1 + this.impuestos)
     );
   }
 
@@ -203,13 +229,60 @@ class Cart {
     this.productosDiv.innerHTML = "";
 
     //muestro los productos que tengo en mi array
-    for (const prod of this.productos) {
-      const divProd = prod.render(this.productosDiv);
-      divProd.onclick = () => {
-        this.removeFromCart(prod);
+    for (const item of this.productos) {
+      const divProd = item.render(this.productosDiv);
+
+      // agrego botones +/-
+      const btnPlus = document.createElement("button");
+      btnPlus.innerHTML = "+";
+      btnPlus.onclick = () => {
+        this.addToCart(item.producto);
       };
+      divProd.appendChild(btnPlus);
+
+      const btnLess = document.createElement("button");
+      btnLess.innerHTML = "-";
+      btnLess.onclick = () => {
+        this.removeFromCart(item.producto);
+      };
+      divProd.appendChild(btnLess);
+
+      //como hago para que se llame desde cartItem?
     }
   }
+}
+
+// -------------------------
+class CartItem {
+  constructor(articulo) {
+    this.cantidad = 1;
+    this.itemDiv = undefined;
+    this.producto = new Producto(articulo.id, articulo.nombre, articulo.precio);
+  }
+
+  render = (targetDiv) => {
+    console.log("CartItem.render()", targetDiv);
+
+    //creo el row
+    const itemDiv = document.createElement("div");
+
+    //muestro cantidad
+    const itemQty = document.createElement("p");
+    itemQty.innerHTML = this.cantidad;
+    itemDiv.appendChild(itemQty);
+
+    //muestro producto
+    this.producto.render(itemDiv);
+
+    //guardo nuevo elemento
+    this.itemDiv = itemDiv;
+
+    //agrego el elemento al div padre
+    targetDiv.appendChild(itemDiv);
+
+    //devuelvo el elemento para agregar funciones (si son necesarias)
+    return itemDiv;
+  };
 }
 
 /// Store ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -248,7 +321,9 @@ const carrito = new Cart();
 
 //creo catálogo
 const catalogo = new Catalogo();
-//cargo los prodctos
+
+//cargo los productos
 catalogo.productos = listaProductos;
+
 //muestro el catalogo
 catalogo.render();
