@@ -17,7 +17,7 @@ class Producto {
     this.precio = precio;
     this.color = "#FFF";
     this.familia = "";
-    this.imagen = 'img/producto_' + id;
+    this.imagen = "img/producto_" + id;
     console.log(". se creo una instancia de Producto");
   }
 
@@ -180,8 +180,8 @@ class Cart {
 
     //array-length////////
     //this.cantProd_elem.innerHTML = this.productos.length;
-    
-    this.cantProd_elem.innerHTML = cantItems
+
+    this.cantProd_elem.innerHTML = cantItems;
     this.subtotal_elem.innerText = subtot;
     this.impuestos_elem.innerText = impuesto;
     this.totalAPagar_elem.innerText = total;

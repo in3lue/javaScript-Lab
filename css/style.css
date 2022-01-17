@@ -10,7 +10,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-family: "Lato", sans-serif;
   color: #585858;
   margin: 0px auto;
@@ -36,7 +36,7 @@ h2 {
 }
 
 p {
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #9e9e9e;
   padding-left: 1rem;
   margin-bottom: 1rem;
@@ -53,7 +53,6 @@ p {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 800;
-  
 }
 .btn {
   border: none;
@@ -77,33 +76,31 @@ p {
   font-weight: 600;
   margin-right: 0.75rem;
 }
-div#wrapper{
+div#wrapper {
   display: flex;
   flex-direction: row;
   padding: 1rem;
-
 }
-div#wrapper>div{
+div#wrapper > div {
   flex: 1 1 auto;
   margin: 10px;
-  padding:10px;
-  border-radius: .5rem;
-
+  padding: 10px;
+  border-radius: 0.5rem;
 }
-#catalogo{
-  border:solid 1px #BBB;
+#catalogo {
+  border: solid 1px #bbb;
 }
 
-.product{
+.product {
   border-radius: 1rem;
-  color:black;
+  color: black;
 }
 
 .product .precio {
   text-align: right;
   font-weight: 800;
   color: #8f1e07;
-  margin-left:.5rem;
+  margin-left: 0.5rem;
 }
 
 #catalogo .product {
@@ -117,29 +114,28 @@ div#wrapper>div{
   box-shadow: 0 0px 3px hsl(0deg 0% 0% / 0.3);
 }
 
-#carrito .product{
-  padding: .5rem;
-  margin-bottom: .5rem;
+#carrito .product {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-x: right;
 }
 
-#carrito .product .familia{
+#carrito .product .familia {
   display: none;
 }
 
-#carrito .product .titulo{
+#carrito .product .titulo {
   display: inline-block;
 }
 
-#carrito .product .precio{
+#carrito .product .precio {
   display: inline-block;
 }
 
-
-#carrito{
-  border:solid 1px #cccccc;
+#carrito {
+  border: solid 1px #cccccc;
   background-color: #e4e4e4;
   min-width: 300px;
 }
