@@ -14,12 +14,12 @@
     border-radius: 0.25rem;
     text-decoration: none;
     text-align: center;
-    background-color: #f07400;
+    background-color: #F07400;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #9c1a00;
+    background-color: #9C1A00;
     text-decoration: none;
     transition: all 0.5s ease-out;
 }

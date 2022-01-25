@@ -26,27 +26,3 @@ const listaProductos = [
     new Producto(15, "Lavandina", 125),
     new Producto(16, "Empanadas", 134),
 ];
-
-/// "Programa" //////////////////////////////////////////////////////////////////////////////////////////////////
-
-//creo carrito
-const carrito = new Cart();
-
-//creo catálogo
-const catalogo = new Catalogo();
-
-//cargo los productos
-catalogo.productos = listaProductos;
-
-//muestro el catalogo
-catalogo.render();
-
-// escucho eventos de botones
-const btnSaveCart = document.getElementById("btn_saveCart");
-btnSaveCart.addEventListener('click', () => carrito.saveCart());
-
-const btnEmptyCart = document.getElementById("btn_emptyCart");
-btnEmptyCart.addEventListener('click', () => carrito.emptyCart());
-
-const btnRestoreCart = document.getElementById("btn_restoreCart");
-btnRestoreCart.addEventListener('click', () => carrito.restoreCart());

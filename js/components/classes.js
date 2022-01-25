@@ -217,7 +217,7 @@ class Cart {
     // guardar
     saveCart() {
         console.log("-----\n- Guardar carrito");
-        localStorage.setItem('carrito', JSON.stringify(carrito.productos))
+        localStorage.setItem("carrito", JSON.stringify(carrito.productos));
         alert("el carrito fue guardado correctamente");
     }
 
@@ -228,19 +228,18 @@ class Cart {
         this.productos = [];
         this.calcularCosto();
         this.render();
-        alert("tu carrito está vacío");
 
         console.log(`el array de productos está vacío`);
-
+        alert("tu carrito está vacío");
     }
 
     // recuperar
     restoreCart() {
-        alert("se recuperará tu carrito")
+        alert("se recuperará tu carrito");
         console.log("-----\n- Recuperar carrito");
 
-        const productos_recuperados = JSON.parse(localStorage.getItem('carrito'));
-        productos_recuperados.forEach(item => {
+        const productos_recuperados = JSON.parse(localStorage.getItem("carrito"));
+        productos_recuperados.forEach((item) => {
             for (let i = 0; i < item.cantidad; i++) {
                 carrito.addToCart(item.producto);
             }
@@ -248,7 +247,9 @@ class Cart {
         this.calcularCosto();
         this.render();
 
-        console.log(`${productos_recuperados.length} items recuperados del localStorage`);
+        console.log(
+            `${productos_recuperados.length} items recuperados del localStorage`
+        );
     }
 
     render() {
