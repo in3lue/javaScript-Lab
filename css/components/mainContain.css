@@ -1,0 +1,41 @@
+div#wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+div#wrapper>div {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 10px;
+    border-radius: .5rem;
+}
+
+#catalogo {
+    border: solid 1px #BBB;
+}
+
+#catalogo .product {
+    width: 200px;
+    height: 150px;
+    margin: 1rem;
+    padding: 1rem;
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 0px 3px hsl(0deg 0% 0% / 0.3);
+}
+
+.product {
+    border-radius: 0.25rem;
+    color: #585858;
+    width: 75%;
+    margin: 5px;
+}
+
+.product .precio {
+    text-align: right;
+    font-weight: 800;
+    color: #8f1e07;
+    margin-left: .5rem;
+}

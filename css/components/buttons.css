@@ -1,0 +1,30 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    border: none;
+    height: 2rem;
+    padding: 5px;
+    margin: 5px;
+    color: #fff;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    text-align: center;
+    background-color: #f07400;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #9c1a00;
+    text-decoration: none;
+    transition: all 0.5s ease-out;
+}
+
+.btn__label {
+    font-weight: 600;
+    margin-right: 0.75rem;
+}
