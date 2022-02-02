@@ -34,8 +34,32 @@ catalogo.render();
 // btnRestoreCart.addEventListener('click', () => carrito.restoreCart());
 
 // reemplacé js puro por jquery
-$("#btn_saveCart").click(() => carrito.saveCart());
+    $("#btn_saveCart").click(() => carrito.saveCart());
+    $("#btn_emptyCart").click(() => carrito.emptyCart());
+    $("#btn_restoreCart").click(() => carrito.restoreCart());
+    $("#delivery").hide();
+    console.log('lol');
 
-$("#btn_emptyCart").click(() => carrito.emptyCart());
+    $("#backToOrder").click(()=>{
+        $("#order").show();
+        $("#carrito .buttons").show();
+        $("#delivery").hide();
+    });
 
-$("#btn_restoreCart").click(() => carrito.restoreCart());
+    $("#setDelivery").click(()=>{
+        $("#order").hide();
+        $("#carrito .buttons").hide();
+        $("#delivery").show();
+
+        // llamada a API
+        // codigo de https://jsonplaceholder.typicode.com/
+        fetch('https://jsonplaceholder.typicode.com/users/1')
+        .then(response => response.json())
+        .then(user => {
+            $("#delivery .name").html(user.name);
+            $("#delivery .street").html(user.address.street);
+            $("#delivery .suite").html(user.address.suite);
+            $("#delivery .zipcode").html(user.address.zipcode);
+        });
+
+    });

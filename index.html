@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="./css/components/cart.css" />
     <link rel="stylesheet" href="./css/components/buttons.css" />
     <link rel="stylesheet" href="./css/components/snackbar.css" />
+    <link rel="stylesheet" href="./css/components/card.css" />
     <link rel="stylesheet" href="./css/showcase.css" />
-    <title>Desafio #11 - Animaciones concatenadas</title>
+    <title>Desafio #12 - AJAX en el Proyecto</title>
 </head>
 
 <body>
     <h1>Carrito de Compras</h1>
-    <h2>Animaciones concatenadas</h2>
+    <h2>AJAX en el Proyecto</h2>
     <div id="wrapper">
         <div id="catalogo">
             <div id="catalogo_filtros">
@@ -31,29 +32,50 @@
             <div id="cart_productos">
                 <!-- aca van los productos -->
             </div>
-            <hr />
             <div class="buttons">
+                <hr />
                 <button id="btn_saveCart" class="btn">Guardar Carrito</button>
                 <button id="btn_emptyCart" class="btn">Limpiar Carrito</button>
                 <button id="btn_restoreCart" class="btn">Recuperar Carrito</button>
             </div>
-            <hr />
-            <div>
-                <div class="checkout">
-                    Cant. Productos: <span id="cantProd">0</span>
-                </div>
+            <div id="order">
+                <hr />
+                <div class="checkout">Cant. Productos: <span id="cantProd">0</span></div>
                 <div class="checkout">SubTotal $<span id="subtotal">0</span></div>
                 <div class="checkout">Impuestos $<span id="impuestos">0</span></div>
                 <div class="checkout total">
                     Total a Pagar $<span id="totalAPagar">0</span>
                 </div>
+                <hr />
+                <button id="setDelivery" class="btn">Concretar envío</button>
+            </div>
+
+            <div id="delivery">
+                <div>
+                    <h3>Tu pedido</h3>
+                </div>
+                <div>
+                    Enviar a
+                    <div class="name"></div>
+                </div>
+                <div>Dirección
+                    <div class="street"></div>
+                    <div class="suite"></div>
+                </div>
+                <div>Codigo Postal
+                    <div class="zipcode"></div>
+                </div>
+                <button id="backToOrder" class="btn">Volver a mi pedido</button>
             </div>
         </div>
     </div>
     <div id="snackbar">I'm a snackbar!!</div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/components/Catalogo.js"></script>
+    <script type="text/javascript" src="js/components/Producto.js"></script>
+    <script type="text/javascript" src="js/components/CartItem.js"></script>
+    <script type="text/javascript" src="js/components/Cart.js"></script>
     <script type="text/javascript" src="js/components/snackbar.js"></script>
-    <script type="text/javascript" src="js/components/classes.js"></script>
     <script type="text/javascript" src="js/components/constants.js"></script>
     <script type="text/javascript" src="js/showcase_jquery.js"></script>
 </body>

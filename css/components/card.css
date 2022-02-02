@@ -1,0 +1,10 @@
+#delivery {
+    display: flex;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    border: solid 1px #CCC;
+    background-color: #FFF;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 0.5rem;
+}
