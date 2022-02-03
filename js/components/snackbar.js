@@ -1,6 +1,5 @@
-
 const origin = {
-    'top': '1vh',
+    'top': '90px',
     'right': '1rem',
     'width': '20rem',
     'height': '4rem',
@@ -8,26 +7,26 @@ const origin = {
     'opacity': 1
 };
 
-const showSnackbar = (message)=>{
+const showSnackbar = (message) => {
 
     $("#snackbar")
         .finish()
         .css(origin)
         .html(message)
 
-        //aparece
-        .animate({
-            'margin-right': '1rem'
-        })
+    //aparece
+    .animate({
+        'margin-right': '1rem'
+    })
 
-        //espera
-        .delay(1000)
+    //espera
+    .delay(1000)
 
-        //se va
-        .animate({
-            'top': '20vh',
-            'opacity': 0
-        });
+    //se va
+    .animate({
+        'top': '20vh',
+        'opacity': 0
+    });
 
 
 }

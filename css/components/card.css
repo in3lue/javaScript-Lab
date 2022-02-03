@@ -8,3 +8,11 @@
     flex-wrap: nowrap;
     border-radius: 0.5rem;
 }
+
+.text {
+    font-size: .9rem;
+    color: #666;
+    font-weight: bold;
+    padding: .15rem;
+    margin: .15rem;
+}

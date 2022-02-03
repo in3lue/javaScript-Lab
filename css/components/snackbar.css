@@ -1,6 +1,6 @@
 #snackbar {
     position: fixed;
-    top: 1vh;
+    top: 90px;
     right: 1rem;
     width: 20rem;
     height: 4rem;
@@ -11,4 +11,3 @@
     align-items: center;
     padding: 1rem;
 }
-

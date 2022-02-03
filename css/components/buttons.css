@@ -5,6 +5,13 @@
     justify-content: center;
 }
 
+.buttonsAlt {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
 .btn {
     border: none;
     height: 2rem;
@@ -20,6 +27,25 @@
 
 .btn:hover {
     background-color: #9C1A00;
+    text-decoration: none;
+    transition: all 0.5s ease-out;
+}
+
+.btnAlt {
+    border: none;
+    height: 2rem;
+    padding: 2px;
+    margin: 2px;
+    color: #fff;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    text-align: center;
+    background-color: #00BEF0;
+    cursor: pointer;
+}
+
+.btnAlt:hover {
+    background-color: #0082A3;
     text-decoration: none;
     transition: all 0.5s ease-out;
 }

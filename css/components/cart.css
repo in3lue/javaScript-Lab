@@ -15,7 +15,7 @@
     border: none;
     text-decoration: none;
     text-align: center;
-    border: 1px solid #f07400;
+    border: 1px solid #00BEF0;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 800;
@@ -43,17 +43,18 @@
 
 .checkout {
     font-weight: 900;
+    margin: 5px;
 }
 
 .total {
-    background-color: #8f1e07;
+    background-color: #0082A3;
     color: #FFF;
     padding: 5px;
-    margin: 5px 0;
+    margin: 5px;
 }
 
 #carrito {
-    border: solid 1px #CCC;
+    border: solid 1px #00BEF0;
     background-color: #E4E4E4;
     min-width: 300px;
 }
