@@ -9,6 +9,17 @@
     align-content: center;
 }
 
+#cart_productos .titulo {
+    display: block;
+}
+
+#cart_productos .precio {
+    display: block;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
 #cart_productos button {
     height: 2rem;
     width: 2rem;
@@ -34,11 +45,11 @@
 }
 
 #carrito .product .titulo {
-    display: inline-block;
+    display: block;
 }
 
 #carrito .product .precio {
-    display: inline-block;
+    display: block;
 }
 
 .checkout {
